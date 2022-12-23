@@ -8,5 +8,35 @@ for (let i=0; i<imgPaths.length; i++) {
 }
 
 const allImgs = document.querySelectorAll(".carouselImg");
-allImgs[0].classList.add("show");
-allImgs[0].classList.remove("hidden");
+allImgs[0].classList.toggle("hidden");
+
+const prevBtn = document.querySelector("#previous");
+const nextBtn = document.querySelector("#next");
+let carouselIndex = 0;
+
+prevBtn.addEventListener("click", function(){
+
+    // Va al'img precedente solo se esiste
+    if (carouselIndex >0) {
+        allImgs[carouselIndex].classList.toggle("hidden");
+
+        carouselIndex--;
+        allImgs[carouselIndex].classList.toggle("hidden");
+    }
+
+    console.log("prev", carouselIndex)
+
+});
+
+nextBtn.addEventListener("click", function(){
+
+    // Passa alla prossima img solo se esiste
+    if (carouselIndex < imgPaths.length -1) {
+        allImgs[carouselIndex].classList.toggle("hidden");
+
+        carouselIndex++;
+        allImgs[carouselIndex].classList.toggle("hidden");
+    }
+
+    console.log("next", carouselIndex)
+});
