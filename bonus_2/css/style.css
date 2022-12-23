@@ -28,6 +28,7 @@ body {
 
     border: 5px solid black;
     box-shadow: 0px 6px 10px 1px rgba(0, 0, 0, 0.5);
+    background-color: #ddd;
 }
 
 .control {
@@ -75,6 +76,86 @@ body {
     object-fit:contain;
 }
 
+.preview {
+    position: absolute;
+    right: -25%;
+    top: 0;
+    width: calc(100px + 1rem);
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.previewImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    overflow: hidden;
+
+    position: relative;
+
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.previewImg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.2s;
+}
+
+.previewImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
 .hidden {
     display: none;
+}
+
+.active {
+    transform: translateX(-15px);
+    border: 3px solid black;
+}
+
+.active.previewImg::after {
+    background: none;
+}
+
+.previewImg:hover:not(.active) {
+    transform: translateX(-5px);
+}
+
+.previewImg:hover:not(.active)::after {
+    background: none;
+}
+
+@media screen and (max-width: 1220px) {
+
+    .preview {
+        right: 50%;
+        top: 110%;
+        transform: translateX(50%);
+
+        width: 100%;
+    }
+
+    .active {
+        transform: translateY(-15px);
+    }
+
+    .previewImg:hover:not(.active) {
+        transform: translateY(-5px);
+    }
 }

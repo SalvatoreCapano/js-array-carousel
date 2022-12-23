@@ -1,14 +1,22 @@
 const imgPaths = ["../img/01.webp", "../img/02.webp", "../img/03.webp", "../img/04.webp", "../img/05.webp",];
 const slideContainer = document.querySelector(".slideContainer");
+const preview = document.querySelector(".preview");
 
 // Genera le img del carousel
 for (let i=0; i<imgPaths.length; i++) {
     slideContainer.innerHTML += `<img src="${imgPaths[i]}" class="hidden carouselImg"></img>`;
     console.log ("slideContainer");
+
+    preview.innerHTML += 
+    `<div class="previewImg">
+        <img src="${imgPaths[i]}">
+    </div>`
 }
 
 const allImgs = document.querySelectorAll(".carouselImg");
 allImgs[0].classList.toggle("hidden");
+const allPreviewImg = document.querySelectorAll(".previewImg");
+allPreviewImg[0].classList.add("active");
 
 const prevBtn = document.querySelector("#previous");
 const nextBtn = document.querySelector("#next");
@@ -22,14 +30,17 @@ prevBtn.addEventListener("click", function(){
     // Va al'img precedente solo se esiste
     if (carouselIndex >0) {
         allImgs[carouselIndex].classList.toggle("hidden");
-
+        allPreviewImg[carouselIndex].classList.remove("active");
         carouselIndex--;
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.add("active");
     }
     else if (carouselIndex == 0) {
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.remove("remove");
         carouselIndex = imgPaths.length -1;
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.add("active");
     }
 
     // Nasconde la freccia previous se raggiungiamo la prima immmagine
@@ -40,6 +51,7 @@ prevBtn.addEventListener("click", function(){
     // Mostra la freccia next
     // nextBtn.style.display= "block";
 
+
     console.log("prev", carouselIndex);
 
 });
@@ -49,14 +61,17 @@ nextBtn.addEventListener("click", function(){
     // Passa alla prossima img solo se esiste
     if (carouselIndex < imgPaths.length -1) {
         allImgs[carouselIndex].classList.toggle("hidden");
-
+        allPreviewImg[carouselIndex].classList.remove("active");
         carouselIndex++;
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.add("active");
     }
     else if (carouselIndex == imgPaths.length - 1) {
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.remove("active");
         carouselIndex = 0;
         allImgs[carouselIndex].classList.toggle("hidden");
+        allPreviewImg[carouselIndex].classList.add("active");
     }
 
     // Nasconde la freccia next se raggiungiamo l'ultima immmagine
