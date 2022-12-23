@@ -1,4 +1,4 @@
-const imgPaths = ["img/01.webp", "img/02.webp", "img/03.webp", "img/04.webp", "img/05.webp",];
+const imgPaths = ["../img/01.webp", "../img/02.webp", "../img/03.webp", "../img/04.webp", "../img/05.webp",];
 const slideContainer = document.querySelector(".slideContainer");
 
 // Genera le img del carousel
@@ -15,7 +15,7 @@ const nextBtn = document.querySelector("#next");
 let carouselIndex = 0;
 
 console.log("inizio", carouselIndex);
-prevBtn.style.display = "none";
+// prevBtn.style.display = "none";
 
 prevBtn.addEventListener("click", function(){
 
@@ -26,13 +26,19 @@ prevBtn.addEventListener("click", function(){
         carouselIndex--;
         allImgs[carouselIndex].classList.toggle("hidden");
     }
+    else if (carouselIndex == 0) {
+        allImgs[carouselIndex].classList.toggle("hidden");
+        carouselIndex = imgPaths.length -1;
+        allImgs[carouselIndex].classList.toggle("hidden");
+    }
 
     // Nasconde la freccia previous se raggiungiamo la prima immmagine
-    if (carouselIndex == 0) {
-        prevBtn.style.display = "none";
-    }
+    // if (carouselIndex == 0) {
+    //     prevBtn.style.display = "none";
+    // }
+
     // Mostra la freccia next
-    nextBtn.style.display= "block";
+    // nextBtn.style.display= "block";
 
     console.log("prev", carouselIndex);
 
@@ -47,13 +53,18 @@ nextBtn.addEventListener("click", function(){
         carouselIndex++;
         allImgs[carouselIndex].classList.toggle("hidden");
     }
+    else if (carouselIndex == imgPaths.length - 1) {
+        allImgs[carouselIndex].classList.toggle("hidden");
+        carouselIndex = 0;
+        allImgs[carouselIndex].classList.toggle("hidden");
+    }
 
     // Nasconde la freccia next se raggiungiamo l'ultima immmagine
-    if (carouselIndex == (imgPaths.length -1)) {
-        nextBtn.style.display = "none";
-    }
+    // if (carouselIndex == (imgPaths.length -1)) {
+    //     nextBtn.style.display = "none";
+    // }
     // Mostra la freccia previous
-    prevBtn.style.display= "block";
+    // prevBtn.style.display= "block";
 
     console.log("next", carouselIndex);
 
