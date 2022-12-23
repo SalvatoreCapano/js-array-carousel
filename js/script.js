@@ -14,6 +14,9 @@ const prevBtn = document.querySelector("#previous");
 const nextBtn = document.querySelector("#next");
 let carouselIndex = 0;
 
+console.log("inizio", carouselIndex);
+prevBtn.style.display = "none";
+
 prevBtn.addEventListener("click", function(){
 
     // Va al'img precedente solo se esiste
@@ -24,7 +27,14 @@ prevBtn.addEventListener("click", function(){
         allImgs[carouselIndex].classList.toggle("hidden");
     }
 
-    console.log("prev", carouselIndex)
+    // Nasconde la freccia previous se raggiungiamo la prima immmagine
+    if (carouselIndex == 0) {
+        prevBtn.style.display = "none";
+    }
+    // Mostra la freccia next
+    nextBtn.style.display= "block";
+
+    console.log("prev", carouselIndex);
 
 });
 
@@ -38,5 +48,13 @@ nextBtn.addEventListener("click", function(){
         allImgs[carouselIndex].classList.toggle("hidden");
     }
 
-    console.log("next", carouselIndex)
+    // Nasconde la freccia next se raggiungiamo l'ultima immmagine
+    if (carouselIndex == (imgPaths.length -1)) {
+        nextBtn.style.display = "none";
+    }
+    // Mostra la freccia previous
+    prevBtn.style.display= "block";
+
+    console.log("next", carouselIndex);
+
 });
