@@ -17,6 +17,7 @@ Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella mile
 
 MILESTONE 3
 Al click dell'utente sulle frecce, il programma cambierà l'immagine attiva, che quindi verrà visualizzata al posto della precedente.
+
 BONUS 1:
 Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all'immagine precedente, dovrà comparire l'ultima immagine dell'array e viceversa.
 
